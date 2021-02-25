@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes(
+    [
+  'register' => false,
+  'verify' => true,
+  'reset' => false
+    ]
+);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/guestbook', [App\Http\Controllers\HomeController::class, 'guestbook'])->name('guestbook');
+
+Route::get('/date', [App\Http\Controllers\HomeController::class, 'date'])->name('date');
