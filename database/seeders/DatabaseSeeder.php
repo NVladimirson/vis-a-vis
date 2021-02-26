@@ -25,8 +25,9 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now()
             ]
         );
-        // \App\Models\FirmModel::factory(100)->create();
 
         \App\Models\PhoneModel::factory(1000)->create();
+
+        \App\Models\FirmModel::factory(10)->create();
     }
 }

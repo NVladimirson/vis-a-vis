@@ -1,0 +1,41 @@
++--------+-----------+--------------------------+-----------------------------+---------------------------------------------------------------------+--------------+
+| Domain | Method    | URI                      | Name                        | Action                                                              | Middleware   |
++--------+-----------+--------------------------+-----------------------------+---------------------------------------------------------------------+--------------+
+|        | GET|HEAD  | /                        | generated::neeVswWvNYzyxV3d | Closure                                                             | web          |
+|        | GET|HEAD  | api/user                 | generated::j7INR2gYaKZtUezn | Closure                                                             | api          |
+|        |           |                          |                             |                                                                     | auth:api     |
+|        | POST      | email/resend             | verification.resend         | App\Http\Controllers\Auth\VerificationController@resend             | web          |
+|        |           |                          |                             |                                                                     | auth         |
+|        |           |                          |                             |                                                                     | throttle:6,1 |
+|        | GET|HEAD  | email/verify             | verification.notice         | App\Http\Controllers\Auth\VerificationController@show               | web          |
+|        |           |                          |                             |                                                                     | auth         |
+|        | GET|HEAD  | email/verify/{id}/{hash} | verification.verify         | App\Http\Controllers\Auth\VerificationController@verify             | web          |
+|        |           |                          |                             |                                                                     | auth         |
+|        |           |                          |                             |                                                                     | signed       |
+|        |           |                          |                             |                                                                     | throttle:6,1 |
+|        | POST      | firms                    | firms.store                 | App\Http\Controllers\FirmController@store                           | web          |
+|        | GET|HEAD  | firms                    | firms.index                 | App\Http\Controllers\FirmController@index                           | web          |
+|        | GET|HEAD  | firms/create             | firms.create                | App\Http\Controllers\FirmController@create                          | web          |
+|        | PUT|PATCH | firms/{firm}             | firms.update                | App\Http\Controllers\FirmController@update                          | web          |
+|        | DELETE    | firms/{firm}             | firms.destroy               | App\Http\Controllers\FirmController@destroy                         | web          |
+|        | GET|HEAD  | firms/{firm}             | firms.show                  | App\Http\Controllers\FirmController@show                            | web          |
+|        | GET|HEAD  | firms/{firm}/edit        | firms.edit                  | App\Http\Controllers\FirmController@edit                            | web          |
+|        | GET|HEAD  | home                     | home                        | App\Http\Controllers\HomeController@index                           | web          |
+|        |           |                          |                             |                                                                     | auth         |
+|        | POST      | login                    | generated::Rk5Zom1wDpiKolwX | App\Http\Controllers\Auth\LoginController@login                     | web          |
+|        |           |                          |                             |                                                                     | guest        |
+|        | GET|HEAD  | login                    | login                       | App\Http\Controllers\Auth\LoginController@showLoginForm             | web          |
+|        |           |                          |                             |                                                                     | guest        |
+|        | POST      | logout                   | logout                      | App\Http\Controllers\Auth\LoginController@logout                    | web          |
+|        | POST      | password/confirm         | generated::VXhy8WD8tY5KnQRV | App\Http\Controllers\Auth\ConfirmPasswordController@confirm         | web          |
+|        |           |                          |                             |                                                                     | auth         |
+|        | GET|HEAD  | password/confirm         | password.confirm            | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm | web          |
+|        |           |                          |                             |                                                                     | auth         |
+|        | GET|HEAD  | phones                   | phones.index                | App\Http\Controllers\PhoneController@index                          | web          |
+|        | POST      | phones                   | phones.store                | App\Http\Controllers\PhoneController@store                          | web          |
+|        | GET|HEAD  | phones/create            | phones.create               | App\Http\Controllers\PhoneController@create                         | web          |
+|        | GET|HEAD  | phones/{phone}           | phones.show                 | App\Http\Controllers\PhoneController@show                           | web          |
+|        | PUT|PATCH | phones/{phone}           | phones.update               | App\Http\Controllers\PhoneController@update                         | web          |
+|        | DELETE    | phones/{phone}           | phones.destroy              | App\Http\Controllers\PhoneController@destroy                        | web          |
+|        | GET|HEAD  | phones/{phone}/edit      | phones.edit                 | App\Http\Controllers\PhoneController@edit                           | web          |
++--------+-----------+--------------------------+-----------------------------+---------------------------------------------------------------------+--------------+

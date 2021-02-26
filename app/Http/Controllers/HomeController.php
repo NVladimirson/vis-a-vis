@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -23,16 +25,32 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('main');
+        return view('sql');
     }
 
-    public function guestbook()
+    public function toggle_crud(Request $request)
     {
-        return view('main');
+        if(isset($request->logout)){
+            $request->session()->put('crud', false);
+            return Redirect::back();
+        }
+        else{
+            $request->validate([
+                'password' => 'required'
+            ]);
+            
+            if($request->password == Config::get('app.crud_password')){
+                $request->session()->put('crud', true);
+                return Redirect::back()->with('success', 'Повышенные привелегии');
+            }else{
+                //dd('sdsdsds');
+                return Redirect::back()->withErrors(['Неправильный пароль']);
+            }
+        }
     }
 
     public function date()
     {
-        return view('main');
+        return view('date');
     }
 }

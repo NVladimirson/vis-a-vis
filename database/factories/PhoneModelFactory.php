@@ -33,9 +33,14 @@ class PhoneModelFactory extends Factory
         else{
             $firm_id = FirmModel::factory();
         }
+        
+        $phone = '+380';
+        for ($i=1; $i <= 9; $i++) { 
+            $phone .= rand(0,9);
+        }
         return [
             'firm_id' => $firm_id, //1 к 4 создание или id последнего
-            'phone' => $this->faker->phoneNumber,
+            'phone' => $phone,
             'created_at' => now(),
             'updated_at' => now()
         ];

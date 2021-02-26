@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\FirmController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PhoneController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +31,11 @@ Auth::routes(
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/guestbook', [App\Http\Controllers\HomeController::class, 'guestbook'])->name('guestbook');
+Route::resource('firms', FirmController::class);
 
-Route::get('/date', [App\Http\Controllers\HomeController::class, 'date'])->name('date');
+Route::resource('phones', PhoneController::class);
+
+Route::post('/toggle_crud', [App\Http\Controllers\HomeController::class, 'toggle_crud'])->name('toggle_crud');
+
+
+
