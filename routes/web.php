@@ -31,11 +31,15 @@ Auth::routes(
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/date', [App\Http\Controllers\HomeController::class, 'date'])->name('date');
+
+Route::post('/toggle_crud', [App\Http\Controllers\HomeController::class, 'toggle_crud'])->name('toggle_crud');
+
+Route::post('/setDate', [App\Http\Controllers\HomeController::class, 'setDate'])->name('setDate');
+
 Route::resource('firms', FirmController::class);
 
 Route::resource('phones', PhoneController::class);
-
-Route::post('/toggle_crud', [App\Http\Controllers\HomeController::class, 'toggle_crud'])->name('toggle_crud');
 
 
 

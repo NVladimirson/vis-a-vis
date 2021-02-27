@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
@@ -49,8 +50,17 @@ class HomeController extends Controller
         }
     }
 
-    public function date()
+    public function date(Request $request)
     {
-        return view('date');
+        if(!$request->session()->get('date')){
+            $request->session()->put('date', Carbon::tomorrow());
+        }
+        $left_date = $request->session()->get('date');
+        $right_date_formatted = $left_date->format('d.m.Y H:00');
+        return view('date',compact('left_date','right_date_formatted'));
+    }
+
+    function setDate(Request $request){
+        $request->session()->put('date', Carbon::parse($request->time));
     }
 }

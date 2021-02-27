@@ -19,7 +19,7 @@
                                     <a class="nav-link" href="{{@route('phones.index')}}">Телефон</a>
                                 </nav>
                             </div>
-                            <a class="nav-link" href="{{@route('phones.index')}}">
+                            <a class="nav-link" href="{{@route('date')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Дата
                             </a>
